@@ -1,8 +1,12 @@
 <div class="container">
   <h1>My Tasks</h1>
   <% @tasks.each do |task| %>
-    <h6><%= link_to "#{task.title}", task_path(task.id) %></h6>
+    <% if task.completed == true %>
+      <h6><i class="fa-regular fa-square-check"></i><%= link_to " #{task.title}", task_path(task.id), class: "link" %></h6>
+      <% else %>
+      <h6><i class="fa-regular fa-square"></i><%= link_to " #{task.title}", task_path(task.id), class: "link" %></h6>
+    <% end %>
   <% end %>
 
-  <div class="btn btn-success"><%= link_to "Create a new task", new_task_path %></div>
+  <div class="btn btn-success"><%= link_to "Create a new task", new_task_path, style: "color: white", class: "link" %></div>
 </div>
